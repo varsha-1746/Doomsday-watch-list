@@ -1,0 +1,2 @@
+import { motion } from 'framer-motion';
+export default function Characters() { return <div className="characters" aria-hidden="true"><motion.div className="silhouette shield" animate={{ y: [0, -14, 0], rotate: [-2, 2, -2] }} transition={{ duration: 7, repeat: Infinity }}>◉</motion.div><motion.div className="silhouette hammer" animate={{ y: [0, 12, 0] }} transition={{ duration: 8, repeat: Infinity }}>✦</motion.div><motion.div className="silhouette cat" animate={{ y: [0, -9, 0], x: [0, 8, 0] }} transition={{ duration: 6, repeat: Infinity }}>⌁</motion.div></div>; }

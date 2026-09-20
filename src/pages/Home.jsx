@@ -1,0 +1,5 @@
+import { motion } from 'framer-motion';
+import { ArrowRight, CheckCircle2, Clock3 } from 'lucide-react';
+import Countdown from '../components/Countdown';
+import Characters from '../components/Characters';
+export default function Home({ username, stats, onContinue }) { return <div className="hero-page"><Characters/><div className="scanlines"/><div className="hero-content"><motion.div className="eyebrow" initial={{opacity:0}} animate={{opacity:1}}>WELCOME BACK, {username.toUpperCase()} //</motion.div><h1>AVENGERS:<br/><span>DOOMSDAY</span></h1><p className="hero-subtitle">Are you ready?</p><Countdown/><div className="completion-line"><div className="mini-ring" style={{'--percent':`${stats.percent}%`}}><span>{stats.percent}%</span></div><span>You have completed <b>{stats.percent}%</b> of the must-watch list</span></div><button className="primary-button hero-cta" onClick={onContinue}>Continue to my watch-list <ArrowRight size={18}/></button><div className="hero-facts"><span><CheckCircle2 size={15}/> {stats.done}/{stats.total} titles complete</span><span><Clock3 size={15}/> {Math.round(stats.remainingHours)} hrs remaining</span></div></div></div>; }
