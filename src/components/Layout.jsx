@@ -1,4 +1,26 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { BarChart3, LogOut, Radio, ShieldCheck, ListChecks } from 'lucide-react';
 import { clearSession } from '../lib/storage';
-export default function Layout({ username, children }) { const navigate = useNavigate(); const logout = () => { clearSession(); navigate('/login'); }; return <div className="app-shell"><header className="topbar"><NavLink to="/" className="brand"><span className="brand-mark">✦</span><span>DOOMSDAY<br/><b>WATCH-LIST</b></span></NavLink><nav><NavLink to="/" end><Radio size={16}/> Countdown</NavLink><NavLink to="/watch-list"><ListChecks size={16}/> Watch-list</NavLink><NavLink to="/analytics"><BarChart3 size={16}/> Analytics</NavLink></nav><div className="user-menu"><span className="online-dot"/> {username}<button className="icon-button" onClick={logout} aria-label="Log out" title="Log out"><LogOut size={17}/></button></div></header><main>{children}</main><footer><ShieldCheck size={14}/> LOCAL MODE // PERSONAL DATA STAYS IN THIS BROWSER</footer></div>; }
+import NivaLogo from './NivaLogo';
+
+export default function Layout({ username, children }) {
+  const navigate = useNavigate();
+  const logout = () => { clearSession(); navigate('/login'); };
+
+  return (
+    <div className="app-shell">
+      <NivaLogo />
+      <header className="topbar">
+        <NavLink to="/" className="brand"><span className="brand-mark">✦</span><span>DOOMSDAY<br/><b>WATCH-LIST</b></span></NavLink>
+        <nav>
+          <NavLink to="/" end><Radio size={16}/> Countdown</NavLink>
+          <NavLink to="/watch-list"><ListChecks size={16}/> Watch-list</NavLink>
+          <NavLink to="/analytics"><BarChart3 size={16}/> Analytics</NavLink>
+        </nav>
+        <div className="user-menu"><span className="online-dot"/> {username}<button className="icon-button" onClick={logout} aria-label="Log out" title="Log out"><LogOut size={17}/></button></div>
+      </header>
+      <main>{children}</main>
+      <footer><ShieldCheck size={14}/> LOCAL MODE // PERSONAL DATA STAYS IN THIS BROWSER</footer>
+    </div>
+  );
+}
